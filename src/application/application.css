@@ -1,0 +1,61 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#playButton{
+	  -fx-background-image: url("../images/play.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#playButton:hover{
+	 -fx-background-image: url("../images/playHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
+}
+
+
+#helpButton{
+	  -fx-background-image: url("../images/help.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#helpButton:hover{
+	 -fx-background-image: url("../images/helpHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+
+#settingsButton{
+	  -fx-background-image: url("../images/settings.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#settingsButton:hover{
+	 -fx-background-image: url("../images/settingsHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+
+#creditsButton{
+	  -fx-background-image: url("../images/credits.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#creditsButton:hover{
+	 -fx-background-image: url("../images/creditsHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+
+}
+#exitButton{
+	  -fx-background-image: url("../images/exit.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#exitButton:hover{
+	 -fx-background-image: url("../images/exitHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+#instructionsView{
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
+}
+#muteBotton{
+	-fx-background-color: #00000000;	
+}
