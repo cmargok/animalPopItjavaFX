@@ -1,5 +1,6 @@
 package application;
 
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,6 +12,8 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -26,11 +29,11 @@ public class MainMenuControllers {
 	Stage stage;
 	//ids desde fxml
 	@FXML
-	ImageView popUpView,mute,shadowImage;
+	ImageView popUpView,mute,shadowImage, entryUser;
 	@FXML 
 	private AnchorPane sceneMainMenu;
 	@FXML 
-	private Button exitButton,cancelInitGame,initGame;
+	private Button exitButton,cancelInitGame,initGame,closePront;
 	@FXML
 	private TextField entryUserField;
 	
@@ -45,32 +48,70 @@ public class MainMenuControllers {
 	private Image helpImage = new Image(getClass().getResourceAsStream("/images/helpImage.png"));		
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
 	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));
-	
-	
-	
-	
-	
-	public void playButtonActions() {
 		
-		//	nameUser = entryUserField.getText(0, 9);
+	public void playButtonActions() {		
+			
 			popUpView.setVisible(false);
 			shadowImage.setVisible(true);	
 			initGame.setVisible(true);	
 			cancelInitGame.setVisible(true);
-			entryUserField.setVisible(true);
-			System.out.println("nameUser");
-		
+			entryUser.setVisible(true);
+			entryUserField.requestFocus();
+			entryUserField.setVisible(true);			
+			entryUserField.setOnKeyPressed(event ->{				
+				if(event.getCode() == KeyCode.ENTER) {
+					System.out.println("enter dsde el lamabda");
+					String c = entryUserField.getText();
+					System.out.println("el usuario es: " +c);
+					if(c=="" || c.length()<=2) {
+						System.out.println("no entro aqui");
+						entryUserField.clear();
+						entryUserField.setPromptText("Digite un usuario correcto");
+						entryUserField.setText("");
+					}else{
+						System.out.println("usuario correcto");
+						createUser();
+					}			
+				
+			}
+				
+			});
+			//initGame.requestFocus(); // me pone el boton en focus
 	}
 	
 	public void initGame() {
-		System.out.println("Game Starting");
+		System.out.println("clickeo");
+		String c = entryUserField.getText();
+		System.out.println("el usuario es: " +c);
+		if(c=="" || c.length()<=2) {
+			System.out.println("no entro aqui");
+			entryUserField.clear();
+			entryUserField.setPromptText("Digite un usuario correcto");
+			entryUserField.setText("");
+		}else{
+			System.out.println("usuario correcto");
+			createUser();
+		}
+		
+		
 	}
+	@FXML
+	void initGameKey(KeyEvent event) {
+		
+		
+	}
+	
+	
 	public void cancelInit() {
 		shadowImage.setVisible(false);	
 		initGame.setVisible(false);	
 		cancelInitGame.setVisible(false);
 		entryUserField.setVisible(false);
-		
+		entryUserField.clear();
+		entryUserField.setText("");
+		entryUser.setVisible(false);
+		closePront.setVisible(false);
+		popUpView.setVisible(false);	
 	}
 	
 	public void helpButtonActions() {	
@@ -118,28 +159,19 @@ public class MainMenuControllers {
 		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
 		exitAlert.setTitle("Animal Pop It Alert");
 		exitAlert.setHeaderText("");
-		exitAlert.setContentText("¿Esta seguro que desea salir?");
-		
+		exitAlert.setContentText("¿Esta seguro que desea salir?");		
 		dialog = exitAlert.getDialogPane();
-		dialog.getStylesheets().add(getClass().getResource("general.css").toExternalForm());
-		
-		dialog.getStyleClass().add("dialog");
-		
-		
+		dialog.getStylesheets().add(getClass().getResource("general.css").toExternalForm());		
+		dialog.getStyleClass().add("dialog");		
 		if(exitAlert.showAndWait().get()==ButtonType.OK) {
 			stage =(Stage) sceneMainMenu.getScene().getWindow();			
 			stage.close();
-		}		
-		
-
-		
-		
+		}				
 	}
-	
-	
-	
+		
 	//PRIVATE METHODS
 	private void setImageView(Image im, int c) {
+		closePront.setVisible(true);
 		popUpView.setImage(im);			
 		popUpView.setVisible(true);		
 		switch (c) {
@@ -156,6 +188,20 @@ public class MainMenuControllers {
 				settings=false;
 				break;
 		}		
+	}
+	
+	private void createUser() {
+		entryUserField.setEditable(false);
+		int c = entryUserField.getLength();			
+		if(c<=10) {
+			nameUser = entryUserField.getText();
+			
+		}else {
+			nameUser = entryUserField.getText(0,10);		
+		}
+		System.out.println("Game Starting");
+		System.out.println(nameUser);
+		
 	}
 	
 }

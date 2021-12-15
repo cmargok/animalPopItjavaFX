@@ -70,36 +70,43 @@
 
 #initGame{
 	-fx-background-image: url("../images/initGame.png");	
-	-fx-background-size: 94px,94px;
+	-fx-background-size: 70px,70px;
 	-fx-background-repeat: no-repeat; 
 	-fx-background-color: #00000000;
 	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
 }
 #initGame:hover{
 	-fx-background-image: url("../images/initGameHover.png");	
-	-fx-background-size: 94px,94px;
+	-fx-background-size: 70px,70px;
 	-fx-background-repeat: no-repeat;  
 	-fx-background-color: #00000000;
 	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
 }
-#cancelInitGame{
+#cancelInitGame,#closePront{
 	-fx-background-image: url("../images/cancel.png");	
-	-fx-background-size: 94px,94px;
+	-fx-background-size: 70px,70px;
 	-fx-background-repeat: no-repeat; 
 	-fx-background-color: #00000000;
 	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
 }
-#cancelInitGame:hover{
+#cancelInitGame:hover, #closePront:hover{
 	-fx-background-image: url("../images/cancelHover.png");	
-	-fx-background-size: 94px,94px;
+	-fx-background-size: 70px,70px;	
 	-fx-background-repeat: no-repeat;  
 	-fx-background-color: #00000000;
 	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
 }
 
 #entryUserField{
-	-fx-background-color: #72573A;
+	-fx-background-color: #7D5F3B;
 	-fx-text-fill: white;
+	-fx-border-radius: 15px,15px,15px,15px;
+	
 	
 }
+#entryUser{
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),100, 0, 0, 0) ; 
+}
+
+
 

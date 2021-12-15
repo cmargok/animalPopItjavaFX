@@ -42,11 +42,17 @@
             <Image url="@../images/trasparente.png" />
          </image>
       </ImageView>
-      <TextField fx:id="entryUserField" alignment="CENTER" layoutX="746.0" layoutY="525.0" prefHeight="72.0" prefWidth="429.0" promptText="Ingresa tu nombre de usuario" visible="false">
+      <ImageView fx:id="entryUser" fitHeight="301.0" fitWidth="468.0" layoutX="715.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/entryUser.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="entryUserField" alignment="CENTER" layoutX="732.0" layoutY="486.0" prefHeight="72.0" prefWidth="429.0" promptText="Ingresa tu nombre de usuario" visible="false">
          <font>
             <Font name="Russo One" size="25.0" />
          </font></TextField>
-      <Button fx:id="initGame" layoutX="973.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#initGame" prefHeight="94.0" prefWidth="94.0" visible="false" />
-      <Button fx:id="cancelInitGame" cancelButton="true" layoutX="811.0" layoutY="650.0" mnemonicParsing="false" onMouseClicked="#cancelInit" prefHeight="94.0" prefWidth="94.0" visible="false" />
+      <Button fx:id="initGame" defaultButton="true" layoutX="1028.0" layoutY="565.0" mnemonicParsing="false" onMouseClicked="#initGame" prefHeight="94.0" prefWidth="94.0" visible="false" />
+      <Button fx:id="cancelInitGame" cancelButton="true" layoutX="799.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#cancelInit" prefHeight="94.0" prefWidth="94.0" visible="false" />
+      <Button fx:id="closePront" cancelButton="true" layoutX="1319.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#cancelInit" prefHeight="94.0" prefWidth="94.0" visible="false" />
    </children>
 </AnchorPane>
