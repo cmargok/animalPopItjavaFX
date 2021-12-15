@@ -38,6 +38,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	
 		
 	protected static MediaPlayer mediaPlayer;
 	public void playMusic() {

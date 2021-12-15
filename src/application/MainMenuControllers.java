@@ -25,7 +25,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainMenuControllers {
-	
 
 	//atributos privados
 	private boolean help;
@@ -62,8 +61,7 @@ public class MainMenuControllers {
 	
 	
 	
-	public void playButtonActions() {		
-			
+	public void playButtonActions() {				
 			popUpView.setVisible(false);
 			shadowImage.setVisible(true);	
 			initGame.setVisible(true);	
@@ -71,19 +69,12 @@ public class MainMenuControllers {
 			entryUser.setVisible(true);
 			entryUserField.requestFocus();
 			entryUserField.setVisible(true);
-			enter();
-			//keypressed action
-		
-			
-			
-		
-			
+			enter();			
 	}
+	
 	private void enter() {
-		entryUserField.setOnKeyPressed(event ->{	
-			
-			if(event.getCode() == KeyCode.ENTER) {
-				
+		entryUserField.setOnKeyPressed(event ->{			
+			if(event.getCode() == KeyCode.ENTER) {				
 				String c = entryUserField.getText();					
 				if(c=="" || c.length()<=2) {						
 					entryUserField.clear();
@@ -102,14 +93,10 @@ public class MainMenuControllers {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}					
-					event.consume();
-					
-				}					
-			}
-			
-			
-		});			
-		
+					event.consume();					
+				}				
+			}		
+		});	
 	}
 	
 	public void initGame(ActionEvent event) throws IOException {		
@@ -127,8 +114,7 @@ public class MainMenuControllers {
 			stage1.setScene(scene);
 			stage1.show();
 			event.consume();
-		}				
-		
+		}		
 	}	
 	
 	public void cancelInit() {
