@@ -1,5 +1,13 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+
+
+
+
+
+
+/* aqui definimos el el fondo de los botones */
+
 #playButton{
 	  -fx-background-image: url("../images/play.png");
 	 -fx-background-color: #00000000;
@@ -59,3 +67,39 @@
 #muteBotton{
 	-fx-background-color: #00000000;	
 }
+
+#initGame{
+	-fx-background-image: url("../images/initGame.png");	
+	-fx-background-size: 94px,94px;
+	-fx-background-repeat: no-repeat; 
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#initGame:hover{
+	-fx-background-image: url("../images/initGameHover.png");	
+	-fx-background-size: 94px,94px;
+	-fx-background-repeat: no-repeat;  
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#cancelInitGame{
+	-fx-background-image: url("../images/cancel.png");	
+	-fx-background-size: 94px,94px;
+	-fx-background-repeat: no-repeat; 
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#cancelInitGame:hover{
+	-fx-background-image: url("../images/cancelHover.png");	
+	-fx-background-size: 94px,94px;
+	-fx-background-repeat: no-repeat;  
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+#entryUserField{
+	-fx-background-color: #72573A;
+	-fx-text-fill: white;
+	
+}
+

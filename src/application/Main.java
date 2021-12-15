@@ -5,14 +5,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 
 public class Main extends Application {
-	
-	
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -20,11 +22,18 @@ public class Main extends Application {
 		try {
 			playMusic();
 			Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			
-			primaryStage.setScene(scene);
+			Scene sceneMainMenu = new Scene(root);
+			sceneMainMenu.getStylesheets().add(getClass().getResource("mainMenu.css").toExternalForm());
+			Image icon = new Image(getClass().getResourceAsStream("/images/icon.png"));
+			primaryStage.getIcons().add(icon);
+			primaryStage.setTitle("Animal Pop It V2");
+			primaryStage.setScene(sceneMainMenu);
 			primaryStage.show();
+			//lambada expression to set the X and ALT+F4 actions "close"
+			primaryStage.setOnCloseRequest(event -> {
+				event.consume();
+				exit(primaryStage);
+				});
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -37,8 +46,25 @@ public class Main extends Application {
 		 mediaPlayer.play();
 		 mediaPlayer.setCycleCount(5);
 	}
+	//alert confirmation to exit the aplication
+	public void exit(Stage stage) {
+		DialogPane dialog;
+		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
+		exitAlert.setTitle("Animal Pop It Alert");
+		exitAlert.setHeaderText("");
+		exitAlert.setContentText("¿Esta seguro que desea salir?");
+		
+		dialog = exitAlert.getDialogPane();
+		dialog.getStylesheets().add(getClass().getResource("general.css").toExternalForm());
+		
+		dialog.getStyleClass().add("dialog");
+		if(exitAlert.showAndWait().get()==ButtonType.OK) {			
+			stage.close();
+		}		
+	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }
