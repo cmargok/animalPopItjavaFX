@@ -161,7 +161,7 @@ public class MainMenuControllers {
 		exitAlert.setHeaderText("");
 		exitAlert.setContentText("¿Esta seguro que desea salir?");		
 		dialog = exitAlert.getDialogPane();
-		dialog.getStylesheets().add(getClass().getResource("general.css").toExternalForm());		
+		dialog.getStylesheets().add(getClass().getResource("/styles/general.css").toExternalForm());		
 		dialog.getStyleClass().add("dialog");		
 		if(exitAlert.showAndWait().get()==ButtonType.OK) {
 			stage =(Stage) sceneMainMenu.getScene().getWindow();			

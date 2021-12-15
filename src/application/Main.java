@@ -23,13 +23,13 @@ public class Main extends Application {
 			playMusic();
 			Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
 			Scene sceneMainMenu = new Scene(root);
-			sceneMainMenu.getStylesheets().add(getClass().getResource("mainMenu.css").toExternalForm());
+			sceneMainMenu.getStylesheets().add(getClass().getResource("/styles/mainMenu.css").toExternalForm());
 			Image icon = new Image(getClass().getResourceAsStream("/images/icon.png"));
 			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("Animal Pop It V2");
 			primaryStage.setScene(sceneMainMenu);
 			primaryStage.show();
-			//lambada expression to set the X and ALT+F4 actions "close"
+			//lambda expression to set the X and ALT+F4 actions "close"
 			primaryStage.setOnCloseRequest(event -> {
 				event.consume();
 				exit(primaryStage);
