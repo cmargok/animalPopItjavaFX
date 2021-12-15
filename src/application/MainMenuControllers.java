@@ -1,9 +1,15 @@
 package application;
 
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -19,12 +25,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainMenuControllers {
+	
 
 	//atributos privados
 	private boolean help;
 	private boolean settings;
 	private boolean credits;
 	private DialogPane dialog;
+	private Player user;
+	private Parent root;
+	private Scene scene;
+	private Stage stage1;
 	
 	Stage stage;
 	//ids desde fxml
@@ -47,8 +58,10 @@ public class MainMenuControllers {
 	
 	private Image helpImage = new Image(getClass().getResourceAsStream("/images/helpImage.png"));		
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
-	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));
-		
+	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));		
+	
+	
+	
 	public void playButtonActions() {		
 			
 			popUpView.setVisible(false);
@@ -57,50 +70,66 @@ public class MainMenuControllers {
 			cancelInitGame.setVisible(true);
 			entryUser.setVisible(true);
 			entryUserField.requestFocus();
-			entryUserField.setVisible(true);			
-			entryUserField.setOnKeyPressed(event ->{				
-				if(event.getCode() == KeyCode.ENTER) {
-					System.out.println("enter dsde el lamabda");
-					String c = entryUserField.getText();
-					System.out.println("el usuario es: " +c);
-					if(c=="" || c.length()<=2) {
-						System.out.println("no entro aqui");
-						entryUserField.clear();
-						entryUserField.setPromptText("Digite un usuario correcto");
-						entryUserField.setText("");
-					}else{
-						System.out.println("usuario correcto");
-						createUser();
-					}			
+			entryUserField.setVisible(true);
+			enter();
+			//keypressed action
+		
+			
+			
+		
+			
+	}
+	private void enter() {
+		entryUserField.setOnKeyPressed(event ->{	
+			
+			if(event.getCode() == KeyCode.ENTER) {
 				
+				String c = entryUserField.getText();					
+				if(c=="" || c.length()<=2) {						
+					entryUserField.clear();
+					entryUserField.setText("");
+					// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
+				}else{
+					System.out.println("nombre de usuario validad correctamente");
+					createUser();
+					try {
+						root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
+						stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
+						scene = new Scene(root);
+						stage1.setScene(scene);
+						stage1.show();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}					
+					event.consume();
+					
+				}					
 			}
-				
-			});
-			//initGame.requestFocus(); // me pone el boton en focus
+			
+			
+		});			
+		
 	}
 	
-	public void initGame() {
-		System.out.println("clickeo");
-		String c = entryUserField.getText();
-		System.out.println("el usuario es: " +c);
-		if(c=="" || c.length()<=2) {
-			System.out.println("no entro aqui");
+	public void initGame(ActionEvent event) throws IOException {		
+		String c = entryUserField.getText();					
+		if(c=="" || c.length()<=2) {						
 			entryUserField.clear();
-			entryUserField.setPromptText("Digite un usuario correcto");
 			entryUserField.setText("");
+			// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
 		}else{
-			System.out.println("usuario correcto");
+			System.out.println("nombre de usuario validad correctamente");
 			createUser();
-		}
+			root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
+			stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage1.setScene(scene);
+			stage1.show();
+			event.consume();
+		}				
 		
-		
-	}
-	@FXML
-	void initGameKey(KeyEvent event) {
-		
-		
-	}
-	
+	}	
 	
 	public void cancelInit() {
 		shadowImage.setVisible(false);	
@@ -199,8 +228,9 @@ public class MainMenuControllers {
 		}else {
 			nameUser = entryUserField.getText(0,10);		
 		}
-		System.out.println("Game Starting");
-		System.out.println(nameUser);
+		user = new Player(nameUser);
+		System.out.println("usuario: "+ user.getNamePlayer());
+		
 		
 	}
 	

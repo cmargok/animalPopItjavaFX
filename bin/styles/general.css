@@ -1,0 +1,22 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+
+
+
+
+/*dialog Alert */
+.dialog {
+	-fx-background-color: #8E663A;
+}
+.dialog > *.content.label{
+	-fx-font-size: 20px;
+	-fx-text-fill: #FDFEFE;
+	-fx-padding: 20px, 0,0,20 ;
+}
+
+
+
+
+

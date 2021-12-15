@@ -1,0 +1,112 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+
+
+
+
+/* aqui definimos el el fondo de los botones */
+
+#playButton{
+	  -fx-background-image: url("../images/play.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#playButton:hover{
+	 -fx-background-image: url("../images/playHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
+}
+
+
+#helpButton{
+	  -fx-background-image: url("../images/help.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#helpButton:hover{
+	 -fx-background-image: url("../images/helpHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+
+#settingsButton{
+	  -fx-background-image: url("../images/settings.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#settingsButton:hover{
+	 -fx-background-image: url("../images/settingsHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+
+#creditsButton{
+	  -fx-background-image: url("../images/credits.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#creditsButton:hover{
+	 -fx-background-image: url("../images/creditsHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+
+}
+#exitButton{
+	  -fx-background-image: url("../images/exit.png");
+	 -fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+}
+#exitButton:hover{
+	 -fx-background-image: url("../images/exitHover.png");	 
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+#instructionsView{
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
+}
+#muteBotton{
+	-fx-background-color: #00000000;	
+}
+
+#initGame{
+	-fx-background-image: url("../images/initGame.png");	
+	-fx-background-size: 70px,70px;
+	-fx-background-repeat: no-repeat; 
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#initGame:hover{
+	-fx-background-image: url("../images/initGameHover.png");	
+	-fx-background-size: 70px,70px;
+	-fx-background-repeat: no-repeat;  
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#cancelInitGame,#closePront{
+	-fx-background-image: url("../images/cancel.png");	
+	-fx-background-size: 70px,70px;
+	-fx-background-repeat: no-repeat; 
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+#cancelInitGame:hover, #closePront:hover{
+	-fx-background-image: url("../images/cancelHover.png");	
+	-fx-background-size: 70px,70px;	
+	-fx-background-repeat: no-repeat;  
+	-fx-background-color: #00000000;
+	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),12, 0, 0, 0) ; 
+}
+
+#entryUserField{
+	-fx-background-color: #7D5F3B;
+	-fx-text-fill: white;
+	-fx-border-radius: 15px,15px,15px,15px;
+	
+	
+}
+#entryUser{
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),100, 0, 0, 0) ; 
+}
+
+
+
