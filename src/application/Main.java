@@ -18,6 +18,8 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
+		System.out.println("------------------------------");
+		System.out.println("New Game");
 		
 		try {
 			playMusic();
@@ -35,20 +37,20 @@ public class Main extends Application {
 				exit(primaryStage);
 				});
 		} catch(Exception e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 	
-		
+	//PRIVATE METHODS
 	protected static MediaPlayer mediaPlayer;
 	public void playMusic() {
 		Media audio = new Media(getClass().getResource("/audio/MainMenu.wav").toString());		  
 		  mediaPlayer= new MediaPlayer(audio);
 		 mediaPlayer.play();
-		 mediaPlayer.setCycleCount(5);
+		 mediaPlayer.setCycleCount(10);
 	}
 	//alert confirmation to exit the aplication
-	public void exit(Stage stage) {
+	private void exit(Stage stage) {
 		DialogPane dialog;
 		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
 		exitAlert.setTitle("Animal Pop It Alert");

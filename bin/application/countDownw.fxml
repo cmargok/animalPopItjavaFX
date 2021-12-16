@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.countDownControllers">
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="countBack" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/c_backGround.png" />
          </image>
@@ -17,5 +18,12 @@
             <Image url="@../images/animals.png" />
          </image>
       </ImageView>
+      <Label fx:id="countLabel" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="1427.0" layoutY="404.0" prefHeight="488.0" prefWidth="350.0" text="ok" textFill="WHITE">
+         <font>
+            <Font name="Russo One" size="180.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="tipViewA" fitHeight="155.0" fitWidth="910.0" layoutX="151.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="tipViewB" fitHeight="155.0" fitWidth="910.0" layoutX="318.0" layoutY="601.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

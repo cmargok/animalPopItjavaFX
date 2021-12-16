@@ -36,6 +36,7 @@ public class MainMenuControllers {
 	private Scene scene;
 	private Stage stage1;
 	
+	
 	Stage stage;
 	//ids desde fxml
 	@FXML
@@ -59,8 +60,6 @@ public class MainMenuControllers {
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
 	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));		
 	
-	
-	
 	public void playButtonActions() {				
 			popUpView.setVisible(false);
 			shadowImage.setVisible(true);	
@@ -70,7 +69,7 @@ public class MainMenuControllers {
 			entryUserField.requestFocus();
 			entryUserField.setVisible(true);
 			enter();			
-	}
+	}	
 	
 	private void enter() {
 		entryUserField.setOnKeyPressed(event ->{			
@@ -83,12 +82,13 @@ public class MainMenuControllers {
 				}else{
 					System.out.println("nombre de usuario validad correctamente");
 					createUser();
-					try {
+					try {						
 						root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 						stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 						scene = new Scene(root);
 						stage1.setScene(scene);
 						stage1.show();
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -134,7 +134,8 @@ public class MainMenuControllers {
 		if(!help) {
 			setImageView(helpImage, 1);		
 		}else {
-			popUpView.setVisible(false);		
+			popUpView.setVisible(false);	
+			closePront.setVisible(false);
 			help=false;				
 		}		
 	}
@@ -144,7 +145,8 @@ public class MainMenuControllers {
 		if(!settings) {
 			setImageView(settingsImage, 2);				
 		}else {
-			popUpView.setVisible(false);		
+			popUpView.setVisible(false);
+			closePront.setVisible(false);
 			settings=false;			
 		}		
 	}
@@ -154,7 +156,8 @@ public class MainMenuControllers {
 		if(!credits) {
 			setImageView(creditsImage, 3);		
 		}else {
-			popUpView.setVisible(false);		
+			popUpView.setVisible(false);	
+			closePront.setVisible(false);
 			credits=false;			
 		}		
 	}
