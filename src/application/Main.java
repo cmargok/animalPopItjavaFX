@@ -23,6 +23,9 @@ public class Main extends Application {
 		
 		try {
 			playMusic();
+		/*	Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+			Scene sceneMainMenu = new Scene(root);
+			sceneMainMenu.getStylesheets().add(getClass().getResource("/styles/mainMenu.css").toExternalForm());*/
 			Parent root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
 			Scene sceneMainMenu = new Scene(root);
 			sceneMainMenu.getStylesheets().add(getClass().getResource("/styles/mainMenu.css").toExternalForm());
@@ -30,6 +33,8 @@ public class Main extends Application {
 			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("Animal Pop It V2");
 			primaryStage.setScene(sceneMainMenu);
+			//primaryStage.setFullScreen(true);
+			primaryStage.setResizable(false);
 			primaryStage.show();
 			//lambda expression to set the X and ALT+F4 actions "close"
 			primaryStage.setOnCloseRequest(event -> {
@@ -61,8 +66,9 @@ public class Main extends Application {
 		dialog.getStylesheets().add(getClass().getResource("/styles/general.css").toExternalForm());
 		
 		dialog.getStyleClass().add("dialog");
-		if(exitAlert.showAndWait().get()==ButtonType.OK) {			
+		if(exitAlert.showAndWait().get()==ButtonType.OK) {
 			stage.close();
+			
 		}		
 	}
 	

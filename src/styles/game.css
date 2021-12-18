@@ -1,0 +1,84 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+
+
+
+
+
+
+/*dialog Alert */
+.button{
+	-fx-background-color: #00000000;
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 
+	-fx-background-repeat: no-repeat; 
+}
+.button:hover{
+	-fx-background-repeat: no-repeat; 
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),17, 0, 0, 0) ; 
+}
+#pig{
+-fx-background-image: url("../images_animals/pigShade.png");	
+}
+#wolf{
+-fx-background-image: url("../images_animals/wolfShade.png");	
+}
+#sheep{
+-fx-background-image: url("../images_animals/sheepShade.png");	
+}
+#dog{
+-fx-background-image: url("../images_animals/dogShade.png");	
+}
+#frog{
+-fx-background-image: url("../images_animals/frogShade.png");	
+}
+#chicken{
+-fx-background-image: url("../images_animals/chickenShade.png");	
+}
+#cow{
+-fx-background-image: url("../images_animals/cowShade.png");	
+}
+#lyon{
+-fx-background-image: url("../images_animals/lyonShade.png");	
+}
+#cat{
+-fx-background-image: url("../images_animals/catShade.png");	
+}
+#monkey{
+-fx-background-image: url("../images_animals/monkeyShade.png");	
+}
+
+#pig:hover{
+-fx-background-image: url("../images_animals/pig.png");	
+}
+#wolf:hover{
+-fx-background-image: url("../images_animals/wolf.png");	
+}
+#sheep:hover{
+-fx-background-image: url("../images_animals/sheep.png");	
+}
+#dog:hover{
+-fx-background-image: url("../images_animals/dog.png");	
+}
+#frog:hover{
+-fx-background-image: url("../images_animals/frog.png");	
+}
+#chicken:hover{
+-fx-background-image: url("../images_animals/chicken.png");	
+}
+#cow:hover{
+-fx-background-image: url("../images_animals/cow.png");	
+}
+#lyon:hover{
+-fx-background-image: url("../images_animals/lyon.png");	
+}
+#cat:hover{
+-fx-background-image: url("../images_animals/cat.png");	
+}
+#monkey:hover{
+-fx-background-image: url("../images_animals/monkey.png");	
+}
+
+
+
+
+

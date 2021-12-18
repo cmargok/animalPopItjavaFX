@@ -1,16 +1,24 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 public class countDownControllers  implements Initializable{
 
@@ -18,10 +26,16 @@ public class countDownControllers  implements Initializable{
 		private Label countLabel;
 		@FXML
 		private ImageView countBack,tipViewA,tipViewB;			
+		@FXML
+		private Button go;
 		
 		private Timeline timer;
 		private int number=3;
-		private Image tipA, tipB;// = new Image(getClass().getResourceAsStream("/images/unmute.png"));
+		private Image tipA, tipB;
+		private Parent root;
+		private Scene scene;
+		private Stage stage2;
+		private Sound CountSound = new Sound("count", "botton");
 				
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,24 +53,48 @@ public class countDownControllers  implements Initializable{
 			timer.getKeyFrames().add( 
 					new KeyFrame(Duration.millis(1000), 
 					e -> {
-						if(number>0) {						
+						if(number>=1) {						
 							countLabel.setText(String.valueOf(number));
+							CountSound.play();
+							System.out.println(number);
 							number--;
-						}else {							
-							//countLabel.setStyle("-fx-font-size: 20px;");
+						}else {								
 							countLabel.setText("GO");
-							timer.stop();
+							System.out.println("go");							
+							//sCountSound.play();
+							timer.stop();	
+							go.setVisible(true);
+							
 						}
 					})); 
 		
 			try {
 			timer.play();
+			 
+			 
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+			
 			Main.mediaPlayer.stop();	
 		}		
 		
+		public void launchGame(ActionEvent event) {
+			
+			try {
+				root = FXMLLoader.load(getClass().getResource("game.fxml"));
+				stage2 = (Stage)((Node) event.getSource()).getScene().getWindow();
+				scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/styles/game.css").toExternalForm());
+				stage2.setScene(scene);
+				stage2.show();
+				
+				} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+		}
 		//PRIVATE METHODS
 		private String[] setBackGround() {
 			String [] tip =new String[2];
@@ -79,7 +117,7 @@ public class countDownControllers  implements Initializable{
 			case 4: r= "tip3"; break;
 			case 5: r= "tip4"; break;
 			case 6: r= "tip5"; break;
-			default : r= "tip0"; break;				
+			default : r= "tip0"; 				
 			}		
 			return r;			
 		}
