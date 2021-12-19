@@ -1,9 +1,3 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
-
-
-
-
-
 
 
 /* aqui definimos el el fondo de los botones */
@@ -23,77 +17,57 @@
 	 -fx-background-image: url("../images/playHover.png");	 
 	 -fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
 }
-
 #helpButton{
 	  -fx-background-image: url("../images/help.png");
-	 }
+}
 #helpButton:hover{
 	 -fx-background-image: url("../images/helpHover.png");	 	
 }
-
 #settingsButton{
 	  -fx-background-image: url("../images/settings.png");	 
 }
 #settingsButton:hover{
 	 -fx-background-image: url("../images/settingsHover.png");	 
-	}
-
-
+}
 #creditsButton{
-	  -fx-background-image: url("../images/credits.png");
-	 
+	  -fx-background-image: url("../images/credits.png");	 
 }
 #creditsButton:hover{
 	 -fx-background-image: url("../images/creditsHover.png");	 
-	
-
 }
 #exitButton{
 	  -fx-background-image: url("../images/exit.png");
-	 }
-#exitButton:hover{
-	 -fx-background-image: url("../images/exitHover.png");	 
-	
 }
-
+#exitButton:hover{
+	 -fx-background-image: url("../images/exitHover.png");	 	
+}
 #instructionsView{
 	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),18, 0, 0, 0) ; 
 }
-#muteBotton{
-	-fx-background-color: #00000000;	
-}
-
 #initGame{
 	-fx-background-image: url("../images/initGame.png");	
 	-fx-background-size: 70px,70px;
-	-fx-background-repeat: no-repeat; 
-	
+	-fx-background-repeat: no-repeat; 	
 }
 #initGame:hover{
 	-fx-background-image: url("../images/initGameHover.png");	
 	-fx-background-size: 70px,70px;
 	-fx-background-repeat: no-repeat;  
-	
 }
 #cancelInitGame,#closePront{
 	-fx-background-image: url("../images/cancel.png");	
 	-fx-background-size: 70px,70px;
-	-fx-background-repeat: no-repeat; 
-	
+	-fx-background-repeat: no-repeat; 	
 }
 #cancelInitGame:hover, #closePront:hover{
 	-fx-background-image: url("../images/cancelHover.png");	
 	-fx-background-size: 70px,70px;	
 	-fx-background-repeat: no-repeat;  
-
 }
-
 #entryUserField{
 	-fx-background-color: #7D5F3B;
 	-fx-text-fill: white;
-	-fx-border-radius: 15px,15px,15px,15px;
-	
-	
+	-fx-border-radius: 15px,15px,15px,15px;	
 }
 #entryUser{
 	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),100, 0, 0, 0) ; 

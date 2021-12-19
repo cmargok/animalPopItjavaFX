@@ -1,12 +1,5 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
-
-
-
-
-
-
-/*dialog Alert */
 .button{
 	-fx-background-color: #00000000;
 	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),10, 0, 0, 0) ; 

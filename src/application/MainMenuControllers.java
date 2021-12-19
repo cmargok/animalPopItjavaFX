@@ -38,7 +38,7 @@ public class MainMenuControllers {
 	
 	
 	Stage stage;
-	//ids desde fxml
+	//enlazando los ids desde fxml para poder trabajar con ellos
 	@FXML
 	ImageView popUpView,mute,shadowImage, entryUser;
 	@FXML 
@@ -60,6 +60,8 @@ public class MainMenuControllers {
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
 	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));		
 	
+	
+	//boton play
 	public void playButtonActions() {				
 			popUpView.setVisible(false);
 			shadowImage.setVisible(true);	
@@ -70,7 +72,8 @@ public class MainMenuControllers {
 			entryUserField.setVisible(true);
 			enter();			
 	}	
-	
+	//metodo para definir que pasa cuando se da enter, estando ubicado en el cuadro de texto
+	//inicia el conteo desde el enter, siempre que se cumplan las condiciones para ello
 	private void enter() {
 		entryUserField.setOnKeyPressed(event ->{			
 			if(event.getCode() == KeyCode.ENTER) {				
@@ -82,7 +85,8 @@ public class MainMenuControllers {
 				}else{
 					System.out.println("nombre de usuario validad correctamente");
 					createUser();
-					try {						
+					try {	
+						//aqui cambiamos la escena por el conteo
 						root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 						stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 						scene = new Scene(root);
@@ -98,7 +102,7 @@ public class MainMenuControllers {
 			}		
 		});	
 	}
-	
+	//metodo para iniciar el conteo desd eel mouse, siempre que se cumplan las condiciones para ello
 	public void initGame(ActionEvent event) throws IOException {		
 		String c = entryUserField.getText();					
 		if(c=="" || c.length()<=2) {						
@@ -108,6 +112,7 @@ public class MainMenuControllers {
 		}else{
 			System.out.println("nombre de usuario validad correctamente");
 			createUser();
+			//aqui cambiamos la escena por el conteos
 			root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 			stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -116,7 +121,7 @@ public class MainMenuControllers {
 			event.consume();
 		}		
 	}	
-	
+	//metodo para definir lo que ocurre cuando le damos al boton cancelar, que esta debajo del cuadro de texto
 	public void cancelInit() {
 		shadowImage.setVisible(false);	
 		initGame.setVisible(false);	
@@ -128,7 +133,7 @@ public class MainMenuControllers {
 		closePront.setVisible(false);
 		popUpView.setVisible(false);	
 	}
-	
+	//boton ayuda o instrucciones
 	public void helpButtonActions() {	
 		soundBotton.play();			
 		if(!help) {
@@ -139,7 +144,7 @@ public class MainMenuControllers {
 			help=false;				
 		}		
 	}
-	
+	//boton configuraciones
 	public void settingsButtonActions() {		
 		soundBotton.play();		
 		if(!settings) {
@@ -150,7 +155,7 @@ public class MainMenuControllers {
 			settings=false;			
 		}		
 	}
-	
+	//boton creditos
 	public void creditsButtonActions() {	
 		soundBotton.play();					
 		if(!credits) {
@@ -161,7 +166,7 @@ public class MainMenuControllers {
 			credits=false;			
 		}		
 	}
-	
+	//boton silenciar sonido
 	public void mute(ActionEvent e) {		
 		if(!Main.mediaPlayer.isMute()) {
 			Main.mediaPlayer.setMute(true);
@@ -172,7 +177,7 @@ public class MainMenuControllers {
 			mute.setImage(muteImage);
 		}		
 	}
-	
+	//boton salir
 	public void exit() {
 		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
 		exitAlert.setTitle("Animal Pop It Alert");
@@ -188,6 +193,7 @@ public class MainMenuControllers {
 	}
 		
 	//PRIVATE METHODS
+	//definir que imagen se va a mostrar, help, settings or credits
 	private void setImageView(Image im, int c) {
 		closePront.setVisible(true);
 		popUpView.setImage(im);			
@@ -208,19 +214,16 @@ public class MainMenuControllers {
 		}		
 	}
 	
+	//metodo para instanciar un nuevo usuario de la clase Player	
 	private void createUser() {
 		entryUserField.setEditable(false);
 		int c = entryUserField.getLength();			
 		if(c<=10) {
-			nameUser = entryUserField.getText();
-			
+			nameUser = entryUserField.getText();			
 		}else {
 			nameUser = entryUserField.getText(0,10);		
 		}
 		user = new Player(nameUser);
-		System.out.println("usuario: "+ user.getNamePlayer());
-		
-		
-	}
-	
+		System.out.println("usuario: "+ user.getNamePlayer());		
+	}	
 }
