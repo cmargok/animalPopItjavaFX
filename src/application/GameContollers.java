@@ -14,7 +14,8 @@ import java.util.ResourceBundle;
 import javafx.concurrent.Task;
 
 public class GameContollers  implements Initializable{
-
+	
+	//enlazando los ids desde fxml para poder trabajar con ellos
 	@FXML
 	private Button pig,wolf,sheep,dog,frog,chicken,cow,lyon,cat,monkey;
 	@FXML
@@ -22,14 +23,14 @@ public class GameContollers  implements Initializable{
 	@FXML
 	private ImageView pigImage,wolfImage,sheepImage,dogImage,frogImage,chickenImage,cowImage,lyonImage,catImage,monkeyImage;
 	
-	
+	//atributos privados
 	private String[] sequence,answers;
 	private Sound soundBotton,AnimalSound;
-	private static final String[] AnimalsList = {"pig","wolf","sheep","dog","frog",
-												"chicken","cow", "lyon","cat","monkey"};
+	private static final String[] AnimalsList = {"pig","wolf","sheep","dog","frog","chicken","cow", "lyon","cat","monkey"};
 	private int delayTime=2000;
-
-	private int levelNumber = 1;	
+	private int levelNumber = 1;
+	protected static int levelNumberStatic=1;
+	//sonidos
 	private Sound pigSound = new Sound("pig", "botton");
 	private Sound wolfSound = new Sound("wolf", "botton");
 	private Sound sheepSound = new Sound("sheep", "botton");
@@ -40,11 +41,12 @@ public class GameContollers  implements Initializable{
 	private Sound lyonSound = new Sound("lyon", "botton");
 	private Sound catSound = new Sound("cat", "botton");
 	private Sound monkeySound = new Sound("monkey", "botton");
+	//musica de fondo
 	private Media audio = new Media(getClass().getResource("/audio/jungle.wav").toString());
 	protected  MediaPlayer mediaGamePlayer = new MediaPlayer(audio);
 	
 	
-	
+	//metodo que inicia el juego
 	public void initGame() {		
 		sequence=new String[levelNumber];
 		level.setText(String.valueOf(levelNumber));
@@ -208,6 +210,7 @@ public class GameContollers  implements Initializable{
 				}			
 				disableAll(false);			
 				levelNumber++;
+				levelNumberStatic=levelNumber;
 				System.out.println("proximo nivel -> "+levelNumber);				
 				return null;			
 			}			
@@ -306,6 +309,7 @@ public class GameContollers  implements Initializable{
 		// TODO Auto-generated method stub
 		mediaGamePlayer.play();
 		mediaGamePlayer.setCycleCount(10);
+		initGame();
 		
 	}
 	

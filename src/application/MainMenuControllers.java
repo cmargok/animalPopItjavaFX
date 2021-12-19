@@ -2,11 +2,15 @@ package application;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,15 +27,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-public class MainMenuControllers {
+public class MainMenuControllers  implements Initializable{
 
 	//atributos privados
 	private boolean help;
 	private boolean settings;
 	private boolean credits;
 	private DialogPane dialog;
-	private Player user;
+	public static Player user;
 	private Parent root;
 	private Scene scene;
 	private Stage stage1;
@@ -40,15 +45,15 @@ public class MainMenuControllers {
 	Stage stage;
 	//enlazando los ids desde fxml para poder trabajar con ellos
 	@FXML
-	ImageView popUpView,mute,shadowImage, entryUser;
+	ImageView popUpView,mute,shadowImage,entryUser,title;
 	@FXML 
 	private AnchorPane sceneMainMenu;
 	@FXML 
-	private Button exitButton,cancelInitGame,initGame,closePront;
+	private Button exitButton,cancelInitGame,initGame,closePront,playButton;
 	@FXML
 	private TextField entryUserField;
 	
-	String nameUser;
+	private static String nameUser;
 	
 	//archivos privados u ocultos
 	private Sound soundBotton = new Sound("botton","botton");
@@ -59,7 +64,7 @@ public class MainMenuControllers {
 	private Image helpImage = new Image(getClass().getResourceAsStream("/images/helpImage.png"));		
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
 	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));		
-	
+	private ScaleTransition scale = new ScaleTransition();
 	
 	//boton play
 	public void playButtonActions() {				
@@ -84,15 +89,15 @@ public class MainMenuControllers {
 					// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
 				}else{
 					System.out.println("nombre de usuario validad correctamente");
-					createUser();
+					entryUserField.setEditable(false);
+					setNameForUser();					
 					try {	
 						//aqui cambiamos la escena por el conteo
 						root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 						stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 						scene = new Scene(root);
 						stage1.setScene(scene);
-						stage1.show();
-						
+						stage1.show();						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -111,7 +116,8 @@ public class MainMenuControllers {
 			// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
 		}else{
 			System.out.println("nombre de usuario validad correctamente");
-			createUser();
+			entryUserField.setEditable(false);
+			setNameForUser();
 			//aqui cambiamos la escena por el conteos
 			root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 			stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -214,16 +220,34 @@ public class MainMenuControllers {
 		}		
 	}
 	
-	//metodo para instanciar un nuevo usuario de la clase Player	
-	private void createUser() {
-		entryUserField.setEditable(false);
-		int c = entryUserField.getLength();			
-		if(c<=10) {
+	
+	private void setNameForUser() {					
+		if(entryUserField.getLength()<=10) {
 			nameUser = entryUserField.getText();			
 		}else {
 			nameUser = entryUserField.getText(0,10);		
 		}
 		user = new Player(nameUser);
-		System.out.println("usuario: "+ user.getNamePlayer());		
-	}	
+		System.out.println("usuario: "+ user.getNamePlayer());	
+	}
+	private void playButtonAnimation() {
+		ScaleTransition play = new ScaleTransition();
+		play.setDuration(Duration.millis(850)); 
+		play.setNode(playButton);
+		play.setByX(0.08);
+		play.setByY(0.08);
+		play.setCycleCount(play.INDEFINITE);
+		play.setAutoReverse(true); 
+		play.play();		
+	}
+	
+	
+
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		playButtonAnimation();
+		
+	}
 }

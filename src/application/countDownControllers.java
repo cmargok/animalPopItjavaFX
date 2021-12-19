@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 
 
 import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,9 +26,9 @@ public class countDownControllers  implements Initializable{
 
 		//enlazando los ids desde fxml para poder trabajar con ellos
 		@FXML
-		private Label countLabel;
+		private Label countLabel,nameUsercd,levelCounter;
 		@FXML
-		private ImageView countBack,tipViewA,tipViewB;			
+		private ImageView countBack,tipViewA,tipViewB,animalsView;			
 		@FXML
 		private Button go;
 		
@@ -39,13 +41,31 @@ public class countDownControllers  implements Initializable{
 		private Stage stage2;
 		//instaciar nuevo sonido
 		private Sound CountSound = new Sound("count", "botton");
+		
+		
+		private String nameUser = MainMenuControllers.user.getNamePlayer();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 				
 		//como la clase es una clase inicialeble, en el siguiente metodo se define
 		//lo que se realiza una vez sea instanciada o llamada la clase
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			animalsViewAnimation();
+			
+			
 			System.out.println("------------------------------");
 			System.out.println("New CountDown");
+			nameUsercd.setText(nameUser);
+			levelCounter.setText(String.valueOf(GameContollers.levelNumberStatic));
+			
 			//creamos array con 2 indices, para introducir los valores dados por el metodo que genera los tips de forma aleatoria
 			String tip[] = new String [2];
 			tip=setBackGround();
@@ -69,13 +89,16 @@ public class countDownControllers  implements Initializable{
 							CountSound.play();
 							System.out.println(number);
 							number--;
-						}else {								
-							countLabel.setText("GO");
+						}else {				
+							go.setVisible(true);
+							goAnimation();
+							CountSound.play();
+							//countLabel.setText("GO");
 							System.out.println("go");							
 							//sCountSound.play();
 							timer.stop();	
 							//hacemos visible el boton de go
-							go.setVisible(true);							
+													
 						}
 					})); 
 		
@@ -131,5 +154,29 @@ public class countDownControllers  implements Initializable{
 			}		
 			return r;			
 		}
+		private void goAnimation() {
+			ScaleTransition goUpGoDown = new ScaleTransition();
+			goUpGoDown.setDuration(Duration.millis(700)); 
+			goUpGoDown.setNode(go);
+			goUpGoDown.setByX(0.08);
+			goUpGoDown.setByY(0.08);
+			goUpGoDown.setCycleCount(goUpGoDown.INDEFINITE);
+			goUpGoDown.setAutoReverse(true); 
+			goUpGoDown.play();
+			
+		}
+		private void animalsViewAnimation() {
+			TranslateTransition crossing = new TranslateTransition();
+			crossing .setDuration(Duration.seconds(12)); 
+			crossing .setNode(animalsView);
+			crossing .setByX(500);		
+			crossing .setCycleCount(10);
+			crossing .setAutoReverse(true); 
+			crossing .play();
+			
+			
+			
+		}
+
 		
 }
