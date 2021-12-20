@@ -40,6 +40,43 @@
 -fx-background-image: url("../images_animals/monkeyShade.png");	
 }
 
+#menuBotton{
+	-fx-background-image: url("../images/menuBotton.png");	
+	-fx-background-size: 60px,60px;
+	-fx-background-repeat: no-repeat; 
+}
+#menuBotton:hover{
+	-fx-background-image: url("../images/menuBottonHover.png");
+	-fx-background-size: 60px,60px;
+}
+#backBotton{
+	-fx-background-image: url("../images/back.png");	
+	-fx-background-size: 60px,60px;
+	-fx-background-repeat: no-repeat; 
+}
+#backBotton:hover{
+	-fx-background-image: url("../images/backHover.png");
+	-fx-background-size: 60px,60px;
+}
+
+#yes{
+	-fx-background-image: url("../images/yes.png");	
+	
+	-fx-background-repeat: no-repeat; 
+}
+#yes:hover{
+	-fx-background-image: url("../images/yesHover.png");
+	
+}
+#no{
+	-fx-background-image: url("../images/no.png");	
+
+
+}
+#no:hover{
+	-fx-background-image: url("../images/noHover.png");
+	
+}
 #pig:hover{
 -fx-background-image: url("../images_animals/pig.png");	
 }

@@ -1,41 +1,56 @@
 package application;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javafx.animation.ScaleTransition;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 
 public class GameContollers  implements Initializable{
 	
 	//enlazando los ids desde fxml para poder trabajar con ellos
 	@FXML
-	private Button pig,wolf,sheep,dog,frog,chicken,cow,lyon,cat,monkey,playNextLevel;
+	private Button pig,wolf,sheep,dog,frog,chicken,cow,lyon,cat,monkey,playNextLevel,menuBotton,backBotton,yes,no;
 	@FXML
-	private Label level,nameUsercd,showAnswers;
+	private Label level,nameUsercd,showAnswers,showNumberLevel;
 	@FXML
-	private ImageView pigImage,wolfImage,sheepImage,dogImage,frogImage,chickenImage,cowImage,lyonImage,catImage,monkeyImage;
+	private ImageView pigImage,wolfImage,sheepImage,dogImage,frogImage,chickenImage,cowImage,lyonImage,catImage,monkeyImage,nextLevelBackground,exitConfirmation;
 	
 	//atributos privados
 	private String[] sequence,answers;
-	//private Sound soundBotton,AnimalSsound;
 	private static final String[] AnimalsList = {"pig","wolf","sheep","dog","frog","chicken","cow", "lyon","cat","monkey"};
 	private int delayTime=2000;
-	private int levelNumber = 1;
+	private int levelNumberr = 1;
 	protected static int levelNumberStatic=1;
 	private int answersPosition=0;
-	private String nameUser = MainMenuControllers.user.getNamePlayer();
+	private Parent root;
+	private Scene scene;
+	private Stage stage3;
 	
+	//informacion del usuario
+	private String nameUser = MainMenuControllers.user.getNamePlayer();
+		
 	//sonidos
 	private Sound pigSound = new Sound("pig", "botton");
 	private Sound wolfSound = new Sound("wolf", "botton");
@@ -48,27 +63,33 @@ public class GameContollers  implements Initializable{
 	private Sound catSound = new Sound("cat", "botton");
 	private Sound monkeySound = new Sound("monkey", "botton");
 	//musica de fondo
-	private Media audio = new Media(getClass().getResource("/audio/jungle.wav").toString());
+	private Media audio = new Media(getClass().getResource("/audio/jungle.wav").toString());	
 	protected  MediaPlayer mediaGamePlayer = new MediaPlayer(audio);
 	
+	
+	//-----------------------------------------------------METODOS Y FUCIONES----------------------------------------------//
 	
 	//metodo que inicia el juego
 	public void initGame() {	
 		playNextLevel.setVisible(false);
+		menuBotton.setVisible(false);
+		backBotton.setVisible(false);
+		nextLevelBackground.setVisible(false);
+		showNumberLevel.setVisible(false);
+		
 		showAnswers.setText("-");
-		sequence=new String[levelNumber];
-		level.setText(String.valueOf(levelNumber));
+		sequence=new String[levelNumberStatic];
+		level.setText(String.valueOf(levelNumberStatic));
 		disableAll(true);
-		System.out.print("Creando secuencia");
-		for (int i = 0; i < levelNumber; i++) {			
+		System.out.println("Creando secuencia ");
+		for (int i = 0; i < levelNumberStatic; i++) {			
 			sequence[i] = AnimalsList[(int) (Math.random() * 10)];
-			System.out.print(i+" "+sequence[i]+", ");
-			System.out.println();
+			System.out.println(i+" "+sequence[i]);		
 		}
 		playRound();				
 	}
 	
-	
+	//-----------------Inicio Animales-----------------------//
 	public void pig() {
 		allStop();
 		pigSound.play();	
@@ -76,7 +97,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="pig";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"pig"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 			
@@ -88,11 +109,10 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="wolf";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"wolf"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
-	}
-		
+	}		
 	public void sheep() {
 		allStop();
 		sheepSound.play();
@@ -100,7 +120,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="sheep";
 		showAnswers.setText(showAnswers.getText()+"sheep"+"-");
 		answersPosition++;
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}	
@@ -111,7 +131,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="dog";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"dog"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -122,7 +142,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="frog";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"frog"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -133,7 +153,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="chicken";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"chicken"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -144,7 +164,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="cow";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"cow"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -155,7 +175,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="lyon";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"lyon"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -166,7 +186,7 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="cat";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"cat"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
@@ -177,29 +197,29 @@ public class GameContollers  implements Initializable{
 		answers[answersPosition]="monkey";
 		answersPosition++;
 		showAnswers.setText(showAnswers.getText()+"monkey"+"-");
-		if(answersPosition==levelNumber) {
+		if(answersPosition==levelNumberStatic) {
 			checkWin(sequence, answers);
 		}
 	}
 	
+	//-----------------------Fin Animales---------------------------//
 	
 	
-	
-	
+	//muestra la secuencia en un sgundo thread
 	public void playRound() {
 
 		Task<Void> showSequence = new Task<Void>() {
 
 			@Override
 			protected Void call() throws Exception {
-				System.out.println("mostrando la secuencia al usuario");
+				System.out.println("mostrando secuencia al usuario");
 				try {					
                     Thread.sleep(1500);                  
                 } catch (InterruptedException e) {
                 	
                 }
 			
-				for (int i = 0 ; i< levelNumber ; i++) {	
+				for (int i = 0 ; i< levelNumberStatic ; i++) {	
 					System.out.println((i)+" "+sequence[i]);
 					
 					switch (sequence[i]) {
@@ -267,9 +287,9 @@ public class GameContollers  implements Initializable{
 					//end for		
 				}			
 				disableAll(false);	
-				answers=new String[levelNumber];
+				answers=new String[levelNumberStatic];
 				
-				System.out.println("fin de la secuencia");
+				System.out.println("fin de la secuencia mostrada");
 				System.out.println("esperando acciones del usuario");
 				
 				
@@ -280,7 +300,7 @@ public class GameContollers  implements Initializable{
 	}
 	
 	//metodo para parar sonidos de los animales
-	private void allStop() {
+	 void allStop() {
 		pigSound.stop(); 
 		wolfSound.stop(); 
 		sheepSound.stop(); 
@@ -360,9 +380,7 @@ public class GameContollers  implements Initializable{
 			break;		
 		}
 	}
-	
-	
-	
+		
 	private void checkWin(String []seq, String ans[]) {
 		
 		Task<Void> sleeper = new Task<Void>() {
@@ -370,52 +388,36 @@ public class GameContollers  implements Initializable{
 			protected Void call() throws Exception{
 				disableAll(true);
 			try {					
-                Thread.sleep(1500);                  
-            } catch (InterruptedException e) {
-            	
+                Thread.sleep(750);                  
+            } catch (InterruptedException e) {            	
             }
-		System.out.println();
-		System.out.println("validando resultados");
-		//sleep();
-		
-		if(Arrays.equals(seq, ans)){
-			allStop();
-			System.out.println("avanzaste de nivel");
-			levelNumber++;
-			levelNumberStatic=levelNumber;
-			playNextLevel.setVisible(true);
-			nextLevelAnimation();
-			System.out.println("proximo nivel -> "+levelNumber);
 			System.out.println();
-			System.out.println();
-			System.out.println("************** NIVEL "+levelNumber+" **************");
+			System.out.println("validando resultados");		
 			
-			//
-		//	initGame();
-		}else {
-			System.out.println("perdiste");
-			
+			if(Arrays.equals(seq, ans)){
+				
+				levelNumberStatic++;
+				winActions();
+				
+				
+				
+			}else {
+				allStop();
+				System.out.println("perdiste");
+			}
+			return null;		
 		}
-		
-		return null;
-		
-		}
-
 	};
 	new Thread(sleeper).start();
 	answersPosition=0;
-		
-	}
-	private void ss() {
-		showAnswers.setText("-");
+	showNumberLevel.setText(String.valueOf(levelNumberStatic+1));
 	}
 	
-
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		nameUsercd.setText(nameUser);
-		System.out.println("************** NIVEL "+levelNumber+" **************");
+		System.out.println("************** NIVEL "+levelNumberStatic+" **************");
 		//showAnswers.setText("-");
 		mediaGamePlayer.play();
 		mediaGamePlayer.setCycleCount(10);
@@ -423,6 +425,44 @@ public class GameContollers  implements Initializable{
 		
 	}
 	
+	
+	private void winActions() {
+		
+		System.out.println("avanzaste de nivel");
+		allStop();
+		nextLevelBackground.setVisible(true);
+		playNextLevel.setVisible(true);
+		menuBotton.setVisible(true);
+		backBotton.setVisible(true);
+		showNumberLevel.setVisible(true);
+		nextLevelAnimation();		
+		System.out.println("proximo nivel -> "+levelNumberStatic);
+		System.out.println();
+		System.out.println();
+		System.out.println("************** NIVEL "+levelNumberStatic+" **************");
+		
+	}
+	public void nextLevel(ActionEvent ev) {
+		if(levelNumberStatic%3==0) {
+			try {	
+				//aqui cambiamos la escena por el conteo
+				root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
+				stage3 = (Stage)((Node) ev.getSource()).getScene().getWindow();
+				scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("/styles/general.css").toExternalForm());
+				stage3.setScene(scene);
+				stage3.show();						
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}					
+			ev.consume();
+			
+			
+		}else {
+			initGame();
+		}
+	}
 	private void nextLevelAnimation() {
 		ScaleTransition nextLevelA = new ScaleTransition();
 		nextLevelA.setDuration(Duration.millis(700)); 
@@ -437,7 +477,37 @@ public class GameContollers  implements Initializable{
 	
 	
 	
+	public void backToMainMenu() {
+		yes.setVisible(true);
+		no.setVisible(true);
+		exitConfirmation.setVisible(true);
+	}
+	public void yesActions(ActionEvent event) {
+		try {
+			System.out.println("nos vemos pronto - "+ MainMenuControllers.user.getNamePlayer());
+			answersPosition=0;
+			
+			levelNumberStatic=1;
+			root = FXMLLoader.load(getClass().getResource("mainMenu.fxml"));
+			stage3 = (Stage)((Node) event.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/styles/mainMenu.css").toExternalForm());
+			stage3.setScene(scene);
+			stage3.show();			
+			
+			} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}event.consume();
 	
+	}
+	public void noActions() {
+		yes.setVisible(false);
+		no.setVisible(false);
+		exitConfirmation.setVisible(false);
+		
+		
+	}
 	
 	
 }

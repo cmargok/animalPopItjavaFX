@@ -18,8 +18,10 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		System.out.println("------------------------------");
-		System.out.println("New Game");
+		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("New Game");	
+		System.out.println("Bievenido a Animal Pop It version 2");
+		System.out.println("--------------------------------------------------------------------------------");
 		
 		try {
 			//damos play a la musica de fondo

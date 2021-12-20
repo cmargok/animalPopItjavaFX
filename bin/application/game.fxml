@@ -20,7 +20,7 @@
             <Font name="Jokerman" size="76.0" />
          </font>
       </Label>
-      <Button layoutX="1759.0" layoutY="73.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="menuBotton" layoutX="1759.0" layoutY="73.0" mnemonicParsing="false" text="Button" visible="false" />
       <Button fx:id="frog" layoutX="758.0" layoutY="780.0" mnemonicParsing="false" onMouseClicked="#frog" prefHeight="240.0" prefWidth="214.0" />
       <Button fx:id="pig" layoutX="1598.0" layoutY="780.0" mnemonicParsing="false" onMouseClicked="#pig" prefHeight="211.0" prefWidth="291.0" />
       <Button fx:id="wolf" layoutX="129.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#wolf" prefHeight="307.0" prefWidth="251.0" />
@@ -31,12 +31,6 @@
       <Button fx:id="sheep" layoutX="492.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#sheep" prefHeight="266.0" prefWidth="202.0" />
       <Button fx:id="chicken" layoutX="916.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#chicken" prefHeight="254.0" prefWidth="195.0" />
       <Button fx:id="lyon" layoutX="1140.0" layoutY="579.0" mnemonicParsing="false" onMouseClicked="#lyon" prefHeight="296.0" prefWidth="281.0" />
-      
-      <Button fx:id="playNextLevel" alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="862.0" mnemonicParsing="false" onMouseClicked="#initGame" prefHeight="117.0" prefWidth="153.0" textFill="WHITE" visible="false">
-         <font>
-            <Font size="43.0" />
-         </font>
-      </Button>
       <ImageView fx:id="pigImage" fitHeight="211.0" fitWidth="291.0" layoutX="1597.0" layoutY="780.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images_animals/pig.png" />
@@ -100,5 +94,30 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <ImageView fx:id="nextLevelBackground" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/nextLevelBackground.png" />
+         </image>
+      </ImageView>
+      
+            <Button fx:id="playNextLevel" alignment="CENTER" contentDisplay="CENTER" layoutX="852.0" layoutY="564.0" mnemonicParsing="false" onAction="#nextLevel" prefHeight="120.0" prefWidth="214.0" textFill="WHITE" visible="false">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Button>
+      <Button fx:id="backBotton" layoutX="781.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="64.0" prefWidth="65.0" visible="false" />
+      <Button fx:id="menuBotton" layoutX="1079.0" layoutY="568.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="76.0" visible="false" />
+      <Label fx:id="showNumberLevel" layoutX="1090.0" layoutY="707.0" rotate="-2.0" text="22" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Russo One" size="46.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="exitConfirmation" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/exitConfirmation.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="yes" layoutX="807.0" layoutY="609.0" mnemonicParsing="false" onAction="#yesActions" prefHeight="46.0" prefWidth="119.0" visible="false" />
+      <Button fx:id="no" layoutX="1007.0" layoutY="610.0" mnemonicParsing="false" onMouseClicked="#noActions" prefHeight="46.0" prefWidth="119.0" visible="false" />
    </children>
 </AnchorPane>

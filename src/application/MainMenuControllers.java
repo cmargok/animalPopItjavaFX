@@ -88,7 +88,7 @@ public class MainMenuControllers  implements Initializable{
 					entryUserField.setText("");
 					// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
 				}else{
-					System.out.println("nombre de usuario validad correctamente");
+					System.out.println("usuario validado correctamente");
 					entryUserField.setEditable(false);
 					setNameForUser();					
 					try {	
@@ -116,7 +116,7 @@ public class MainMenuControllers  implements Initializable{
 			entryUserField.setText("");
 			// aqui debemos mostrar letrero que indique("Digite un usuario correcto");					
 		}else{
-			System.out.println("nombre de usuario validad correctamente");
+			System.out.println("usuario validado correctamente");
 			entryUserField.setEditable(false);
 			setNameForUser();
 			//aqui cambiamos la escena por el conteos
