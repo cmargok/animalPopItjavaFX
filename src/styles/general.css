@@ -9,7 +9,18 @@
 	-fx-text-fill: #FDFEFE;
 	-fx-padding: 20px, 0,0,20 ;
 }
-
+#go{
+	-fx-background-color: #00000000;
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),1, 0, 0, 0);
+	-fx-background-image: url("../images/go.png");
+	-fx-background-repeat: no-repeat; 
+}
+#go:hover{
+	-fx-background-color: #00000000;
+	-fx-effect: dropshadow( three-pass-box,rgba(0,0,0,0.8),1, 0, 0, 0);
+	-fx-background-image: url("../images/goHover.png");
+	-fx-background-repeat: no-repeat; 
+}
 
 
 

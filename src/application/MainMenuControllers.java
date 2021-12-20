@@ -96,6 +96,7 @@ public class MainMenuControllers  implements Initializable{
 						root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 						stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 						scene = new Scene(root);
+						scene.getStylesheets().add(getClass().getResource("/styles/general.css").toExternalForm());
 						stage1.setScene(scene);
 						stage1.show();						
 					} catch (IOException e) {
@@ -122,6 +123,7 @@ public class MainMenuControllers  implements Initializable{
 			root = FXMLLoader.load(getClass().getResource("countDownw.fxml"));
 			stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/styles/general.css").toExternalForm());
 			stage1.setScene(scene);
 			stage1.show();
 			event.consume();

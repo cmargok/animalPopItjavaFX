@@ -70,6 +70,12 @@
 #monkey:hover{
 -fx-background-image: url("../images_animals/monkey.png");	
 }
+#playNextLevel{
+	-fx-background-image: url("../images/nextLevel.png");	
+}
+#playNextLevel:hover{
+	-fx-background-image: url("../images/nextLevelHover.png");	
+}
 
 
 

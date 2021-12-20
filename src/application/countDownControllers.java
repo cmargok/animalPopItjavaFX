@@ -62,7 +62,7 @@ public class countDownControllers  implements Initializable{
 			
 			
 			System.out.println("------------------------------");
-			System.out.println("New CountDown");
+			
 			nameUsercd.setText(nameUser);
 			levelCounter.setText(String.valueOf(GameContollers.levelNumberStatic));
 			
