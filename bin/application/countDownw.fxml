@@ -37,5 +37,8 @@
             <Font name="Russo One" size="48.0" />
          </font>
       </Label>
+       <Label fx:id="h1" layoutX="207.0" layoutY="137.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0" />
+      <Label fx:id="h2" layoutX="249.0" layoutY="134.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0" />
+      <Label fx:id="h3" layoutX="288.0" layoutY="131.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0" />
    </children>
 </AnchorPane>

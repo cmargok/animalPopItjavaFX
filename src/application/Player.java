@@ -31,8 +31,8 @@ public class Player {
 	 * asigna las vidas del jugador
 	 * @return asigna del jugador
 	 */
-	protected void setLives(int lives_) {
-		lives = lives_;
+	protected void setLivesLess() {
+		lives--;
 	}
 	/**
 	 * obtiene el nivel alcanzado por el jugador

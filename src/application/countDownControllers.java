@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -26,7 +26,7 @@ public class countDownControllers  implements Initializable{
 
 		//enlazando los ids desde fxml para poder trabajar con ellos
 		@FXML
-		private Label countLabel,nameUsercd,levelCounter;
+		private Label countLabel,nameUsercd,levelCounter,h1,h2,h3;
 		@FXML
 		private ImageView countBack,tipViewA,tipViewB,animalsView;			
 		@FXML
@@ -41,7 +41,7 @@ public class countDownControllers  implements Initializable{
 		private Stage stage2;
 		//instaciar nuevo sonido
 		private Sound CountSound = new Sound("count", "botton");
-		
+		private Sound soundBotton = new Sound("botton","botton");
 		
 		private String nameUser = MainMenuControllers.user.getNamePlayer();
 		
@@ -58,9 +58,10 @@ public class countDownControllers  implements Initializable{
 		//lo que se realiza una vez sea instanciada o llamada la clase
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
+			
 			animalsViewAnimation();
 			
-			
+			setHearts();
 			System.out.println("------------------------------");
 			
 			nameUsercd.setText(nameUser);
@@ -113,7 +114,8 @@ public class countDownControllers  implements Initializable{
 		}		
 		//una vez aparece el boton GO, se nos habilita el siguiente metodo, que cambia la escena, por la escena deseada
 		//esta escena es la del juego como tal
-		public void launchGame(ActionEvent event) {			
+		public void launchGame(ActionEvent event) {		
+			soundBotton.play();	
 			try {
 				root = FXMLLoader.load(getClass().getResource("game.fxml"));
 				stage2 = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -160,7 +162,7 @@ public class countDownControllers  implements Initializable{
 			goUpGoDown.setNode(go);
 			goUpGoDown.setByX(0.08);
 			goUpGoDown.setByY(0.08);
-			goUpGoDown.setCycleCount(goUpGoDown.INDEFINITE);
+			goUpGoDown.setCycleCount(Animation.INDEFINITE);
 			goUpGoDown.setAutoReverse(true); 
 			goUpGoDown.play();
 			
@@ -176,6 +178,22 @@ public class countDownControllers  implements Initializable{
 			
 			
 			
+		}
+		private void setHearts() {
+			switch(MainMenuControllers.user.getLives()) {
+			case 0: 
+					h1.setDisable(true);
+					h2.setDisable(true);
+					h3.setDisable(true);
+					break;
+			case 1: 					
+					h2.setDisable(true);
+					h3.setDisable(true);
+					break;
+			case 2: h3.setDisable(true);
+					break;
+			
+			}
 		}
 
 		

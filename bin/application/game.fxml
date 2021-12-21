@@ -86,7 +86,7 @@
             <Font name="Russo One" size="38.0" />
          </font>
       </Label>
-      <Label fx:id="showAnswers" layoutX="12.0" layoutY="1047.0" prefHeight="37.0" prefWidth="1908.0" style="-fx-background-color: #FFFFFFDD;" textFill="#755b5d">
+      <Label fx:id="showAnswers" layoutX="4.0" layoutY="1043.0" prefHeight="37.0" prefWidth="1908.0" style="-fx-background-color: #FFFFFFDD;" textFill="#755b5d">
          <font>
             <Font name="Russo One" size="21.0" />
          </font>
@@ -94,6 +94,7 @@
             <Insets />
          </opaqueInsets>
       </Label>
+      <Button fx:id="repeat" layoutX="43.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#showSequenceAgain" prefHeight="73.0" prefWidth="76.0" />
       <ImageView fx:id="nextLevelBackground" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/nextLevelBackground.png" />
@@ -105,13 +106,24 @@
             <Font size="43.0" />
          </font>
       </Button>
-      <Button fx:id="backBotton" layoutX="781.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="64.0" prefWidth="65.0" visible="false" />
-      <Button fx:id="menuBotton" layoutX="1079.0" layoutY="568.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="76.0" visible="false" />
       <Label fx:id="showNumberLevel" layoutX="1090.0" layoutY="707.0" rotate="-2.0" text="22" textFill="WHITE" visible="false">
          <font>
             <Font name="Russo One" size="46.0" />
          </font>
       </Label>
+      <ImageView fx:id="newTryBackGround" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/newTryBackGroundpng.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="newTry" layoutX="852.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#retry" prefHeight="110.0" prefWidth="214.0" visible="false" />
+      <Label fx:id="newTryLabel" layoutX="1073.0" layoutY="707.0" rotate="-3.0" textFill="#eeeeee" visible="false">
+         <font>
+            <Font name="Russo One" size="46.0" />
+         </font>
+      </Label>
+      <Button fx:id="backBotton" layoutX="781.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="64.0" prefWidth="65.0" visible="false" />
+      <Button fx:id="menuBotton" layoutX="1079.0" layoutY="568.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="76.0" visible="false" />
       <ImageView fx:id="exitConfirmation" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../images/exitConfirmation.png" />
@@ -119,5 +131,8 @@
       </ImageView>
       <Button fx:id="yes" layoutX="807.0" layoutY="609.0" mnemonicParsing="false" onAction="#yesActions" prefHeight="46.0" prefWidth="119.0" visible="false" />
       <Button fx:id="no" layoutX="1007.0" layoutY="610.0" mnemonicParsing="false" onMouseClicked="#noActions" prefHeight="46.0" prefWidth="119.0" visible="false" />
+      <Label fx:id="h1" layoutX="207.0" layoutY="143.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0" />
+      <Label fx:id="h2" layoutX="249.0" layoutY="141.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0"/>
+      <Label fx:id="h3" layoutX="288.0" layoutY="139.0" prefHeight="46.0" prefWidth="42.0" rotate="-2.0"/>
    </children>
 </AnchorPane>

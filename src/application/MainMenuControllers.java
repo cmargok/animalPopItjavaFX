@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.Animation;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,8 +23,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -64,10 +62,11 @@ public class MainMenuControllers  implements Initializable{
 	private Image helpImage = new Image(getClass().getResourceAsStream("/images/helpImage.png"));		
 	private Image creditsImage = new Image(getClass().getResourceAsStream("/images/creditsImage.png"));
 	private Image settingsImage = new Image(getClass().getResourceAsStream("/images/settingsImage.png"));		
-	private ScaleTransition scale = new ScaleTransition();
+//	private ScaleTransition scale = new ScaleTransition();
 	
 	//boton play
-	public void playButtonActions() {				
+	public void playButtonActions() {	
+			soundBotton.play();	
 			popUpView.setVisible(false);
 			shadowImage.setVisible(true);	
 			initGame.setVisible(true);	
@@ -109,7 +108,8 @@ public class MainMenuControllers  implements Initializable{
 		});	
 	}
 	//metodo para iniciar el conteo desd eel mouse, siempre que se cumplan las condiciones para ello
-	public void initGame(ActionEvent event) throws IOException {		
+	public void initGame(ActionEvent event) throws IOException {	
+		soundBotton.play();	
 		String c = entryUserField.getText();					
 		if(c=="" || c.length()<=2) {						
 			entryUserField.clear();
@@ -127,10 +127,12 @@ public class MainMenuControllers  implements Initializable{
 			stage1.setScene(scene);
 			stage1.show();
 			event.consume();
+			System.exit(0);
 		}		
 	}	
 	//metodo para definir lo que ocurre cuando le damos al boton cancelar, que esta debajo del cuadro de texto
 	public void cancelInit() {
+		soundBotton.play();	
 		shadowImage.setVisible(false);	
 		initGame.setVisible(false);	
 		cancelInitGame.setVisible(false);
@@ -236,9 +238,9 @@ public class MainMenuControllers  implements Initializable{
 		ScaleTransition play = new ScaleTransition();
 		play.setDuration(Duration.millis(850)); 
 		play.setNode(playButton);
-		play.setByX(0.08);
-		play.setByY(0.08);
-		play.setCycleCount(play.INDEFINITE);
+		play.setByX(0.05);
+		play.setByY(0.05);
+		play.setCycleCount(Animation.INDEFINITE);
 		play.setAutoReverse(true); 
 		play.play();		
 	}
