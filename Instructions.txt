@@ -1,0 +1,5 @@
+1)needs 
+	*JAVA 17
+	*.NET framework 5.0
+2)copy the AnimalPopit folder to desktop
+3)run AnimalPopit.exe
