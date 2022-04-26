@@ -1,8 +1,6 @@
 package org.openjfx.AnimalPopIt;
 
-public class Player {
-
-	/**
+public class Player {	/**
 	 * Clase jugador
 	 */
 	private String namePlayer;

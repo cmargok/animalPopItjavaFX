@@ -192,7 +192,7 @@ public class MainMenuControllers  implements Initializable{
 		Alert exitAlert = new Alert(AlertType.CONFIRMATION);
 		exitAlert.setTitle("Animal Pop It Alert");
 		exitAlert.setHeaderText("");
-		exitAlert.setContentText("�Esta seguro que desea salir?");		
+		exitAlert.setContentText("�Are you sure exit?");		
 		dialog = exitAlert.getDialogPane();
 		dialog.getStylesheets().add(getClass().getResource("styles/general.css").toExternalForm());		
 		dialog.getStyleClass().add("dialog");		
